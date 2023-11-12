@@ -1,0 +1,187 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "john_doe",
+      "email": "john@example.com",
+      "password": "hashed_password",
+      "phone": "0712345678",
+      "city": "city1",
+      "role_id": 3
+    },
+    {
+      "id": 2,
+      "username": "business_user",
+      "email": "business@example.com",
+      "password": "hashed_password",
+      "phone": "0723456789",
+      "city": "city2",
+      "role_id": 2
+    },
+    {
+      "id": 3,
+      "username": "charity_user",
+      "email": "charity@example.com",
+      "password": "hashed_password",
+      "phone": "0734567890",
+      "city": "city3",
+      "role_id": 4
+    },
+    {
+      "username": "bbalkhader@gmail.com",
+      "email": "bbalkhader@gmail.com",
+      "password": "Bayanbilal@2",
+      "phone": "0798864897",
+      "city": "city1",
+      "role_id": 3,
+      "id": 4
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    },
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    },
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    },
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    },
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    },
+    {
+      "id": 1,
+      "foodName": "Delicious Food 1",
+      "image": "path/to/food1.png",
+      "location": "City 1, Country",
+      "username": "User1",
+      "postedTime": "September 30, 2023"
+    },
+    {
+      "id": 2,
+      "foodName": "Delicious Food 2",
+      "image": "path/to/food2.png",
+      "location": "City 2, Country",
+      "username": "User2",
+      "postedTime": "October 1, 2023"
+    },
+    {
+      "id": 3,
+      "foodName": "Delicious Food 3",
+      "image": "path/to/food3.png",
+      "location": "City 3, Country",
+      "username": "User3",
+      "postedTime": "October 2, 2023"
+    }
+ 
+  ]
+}
