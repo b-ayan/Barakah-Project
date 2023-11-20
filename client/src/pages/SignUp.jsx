@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [userType, setUserType] = useState("normal");
+  const [userType, setUserType] = useState("charity");
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -14,11 +15,15 @@ const SignUp = () => {
     city: "city1",
   });
   const [formErrors, setFormErrors] = useState({});
+  const [industryType, setIndustryType] = useState("");
+  const [foodProviderType, setFoodProviderType] = useState("");
+  const navigate = useNavigate();
 
-  const handleUserTypeChange = (event) => {
-    setUserType(event.target.value);
+  const handleUserTypeChange = (e) => {
+    setUserType(e.target.value);
+    setIndustryType(""); // Reset industry type when user type changes
+    setFoodProviderType(""); // Reset food provider type when user type changes
   };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -73,6 +78,7 @@ const SignUp = () => {
         phone: formData.phoneNumber,
         city: formData.city,
         role_id: getUserRoleId(userType), // Function to get role_id based on user type
+        industry: userType === "business" ? industryType : foodProviderType,
       };
 
       try {
@@ -84,9 +90,10 @@ const SignUp = () => {
 
         // Handle success (you can customize this part based on your API response)
         swal("Done!", "You've signed up successfully", "success");
+        navigate("/");
       } catch (error) {
         // Handle error (you can customize this part based on your API error handling)
-        swal("Error!", error, "success");
+        //swal("Error!", error, "success");
       }
     }
   };
@@ -94,11 +101,11 @@ const SignUp = () => {
   // Function to get role_id based on user type
   const getUserRoleId = (type) => {
     switch (type) {
-      case "normal":
-        return 3; // Assuming 3 is the role_id for normal users
-      case "business":
-        return 2; // Assuming 2 is the role_id for business users
       case "charity":
+        return 3; // Assuming 3 is the role_id for normal users
+      case "provider":
+        return 2; // Assuming 2 is the role_id for business users
+      case "recycling":
         return 4; // Assuming 4 is the role_id for charity users
       default:
         return null;
@@ -119,25 +126,6 @@ const SignUp = () => {
       <div className="bg-background p-40 ">
         <div className="max-w-xl mx-auto  p-28 bg-white shadow-lg text-blue pt-48">
           <form onSubmit={handleSubmit}>
-            <div className="mb-4  ">
-              <label
-                htmlFor="userType"
-                className="block text-sm font-bold mt-6"
-              >
-                Sign Up as:
-              </label>
-              <select
-                name="userType"
-                value={userType}
-                onChange={handleUserTypeChange}
-                required
-                className="block w-full p-2 mt-1 border h-10 "
-              >
-                <option value="normal">Normal User</option>
-                <option value="business">Business User</option>
-                <option value="charity">Charity</option>
-              </select>
-            </div>
             <div className="mb-4">
               <label htmlFor="fullName" className="block text-sm font-bold ">
                 Full Name:
@@ -260,9 +248,76 @@ const SignUp = () => {
                   <option value="city2">City 2</option>
                   <option value="city3">City 3</option>
                 </select>
-              </div>{" "}
+              </div>
             </div>
-            <div className="text-center mt-4 ">
+
+            <div className="mb-4 ">
+              <label htmlFor="userType" className="block text-sm font-bold ">
+                Sign Up as:
+              </label>
+              <select
+                name="userType"
+                value={userType}
+                onChange={handleUserTypeChange}
+                required
+                className="block w-full p-2 mt-1 border h-10 "
+              >
+                <option value="charity">charity</option>
+                <option value="provider">Food Provider</option>
+                <option value="recycling">Recycling Agency</option>
+              </select>
+            </div>
+
+            {userType === "recycling" && (
+              <div className="mb-8">
+                <label
+                  htmlFor="industryType"
+                  className="block text-sm font-bold mt-6"
+                >
+                  Industry Type:
+                </label>
+                <select
+                  name="industryType"
+                  value={industryType}
+                  onChange={(e) => setIndustryType(e.target.value)}
+                  required
+                  className="block w-full p-2 mt-1 border h-10"
+                >
+                  <option value="compost">Compost</option>
+                  <option value="animalFeed">Animal Feed</option>
+                  <option value="soap">Soap</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            )}
+
+            {userType === "provider" && (
+              <div className="mb-8">
+                <label
+                  htmlFor="foodProviderType"
+                  className="block text-sm font-bold mt-6"
+                >
+                  Food Provider Type:
+                </label>
+                <select
+                  name="foodProviderType"
+                  value={foodProviderType}
+                  onChange={(e) => setFoodProviderType(e.target.value)}
+                  required
+                  className="block w-full p-2 mt-1 border h-10"
+                >
+                  <option value="restaurant">Restaurant</option>
+                  <option value="supermarket">Supermarket</option>
+                  <option value="foodManufacturer">Food Manufacturer</option>
+                  <option value="agriculture">Agriculture</option>
+                  <option value="caterer">Caterer</option>
+                  <option value="individual">Individual</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            )}
+
+            <div className="text-center mt-8 ">
               <button
                 type="submit"
                 className="bg-orange  text-white py-2 px-20 shadow-md text-md font-semibold "
@@ -270,7 +325,7 @@ const SignUp = () => {
                 Sign Up
               </button>
 
-              {userType === "normal" ? (
+              {userType === "charity" ? (
                 <div className="text-center mt-4">
                   <div className="font-medium mb-4">or </div>
                   <button className="bg-transparent border border-blue text-blue py-2 px-8  text-md font-semibold">
@@ -279,7 +334,7 @@ const SignUp = () => {
                 </div>
               ) : null}
 
-              <div className="text-blue font-medium text-md mt-6">
+              <div className="text-blue font-medium text-md mt-12">
                 Already have an account?{" "}
                 <Link to="/signin">
                   <button className="font-bold">Sign In</button>

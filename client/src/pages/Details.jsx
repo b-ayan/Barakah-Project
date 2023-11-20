@@ -1,22 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 import food from "../assets/food.png";
+import RequestForm from "../components/RequestForm";
 
 const Details = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postDetails, setPostDetails] = useState(null);
+  const [isRequestFormOpen, setIsRequestFormOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    // Fetch post details based on the id from the URL params
+    axios
+      .get(`http://localhost:3000/posts/${id}`)
+      .then((response) => {
+        setPostDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching post details:", error);
+        // Handle error, e.g., show an alert
+        Swal.fire({
+          icon: "error",
+          title: "Error!",
+          text: "There was an error fetching post details.",
+        });
+      });
+  }, [id]);
+
+  const openRequestForm = () => {
+    setIsRequestFormOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeRequestForm = () => {
+    setIsRequestFormOpen(false);
   };
 
   const handleRequestFood = () => {
     // Add logic to handle the food request
     // You can send the request details to the server or perform any other action
-    openModal(); // Open the modal after handling the request
+    // Open the modal after handling the request
   };
+
+  if (!postDetails) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="bg-background pt-28 relative pb-24">
@@ -28,40 +57,74 @@ const Details = () => {
         />
 
         <div className="p-24 pt-60">
-          <div className="flex items-center mb-1">
-            <div className="text-2xl font-bold mr-6 text-blue">
-              Delicious Food Name
+          <div className="flex items-center mb-2 t">
+            <div className="text-2xl font-bold mr-6 text-blue ">
+              {postDetails.foodType}
             </div>
-            <span className="ml-4 text-blue">September 30, 2023</span>
+            {/* <span className="ml-4 text-blue">{postDetails.postedTime}</span> */}
           </div>
 
-          <div className="mb-1 text-blue font-medium">Donator123</div>
-          <div className="mb-4 text-blue font-medium">City, Country</div>
-
-          <div className="mb-4 text-blue">
-            <span className="text-blue font-bold block">Details:</span> Lorem
-            ipsum dolor sit amet, consectetur adipiscing elit. Sed nonne
-            merninisti licere mihi ista probare, quae sunt a te dicta?
+          <div className="mb-1 text-blue font-medium">
+            <span className="font-bold">Posted by:</span> {postDetails.username}
           </div>
-          <div className="flex items-center gap-20 text-blue mb-8">
-            <div className="mb-4">
-              <span className="font-bold">Quantity:</span> 5 servings
-            </div>
+          <div className="mb-4 text-blue font-medium flex gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 "
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              />
+            </svg>
+            {postDetails.city}
+          </div>
 
-            <div className="mb-4">
-              <span className="font-bold">Expiry Date:</span> 2023-12-31
+          <div className="flex items-center gap-20 text-blue mb-4">
+            <div className="mb-4 flex flex-col">
+              <span className="font-bold">Quantity:</span>{" "}
+              {postDetails.quantity}
+            </div>
+            <div className="mb-4 flex flex-col">
+              <span className="font-bold">Expiry Date:</span>{" "}
+              {postDetails.expired ? "Expired" : postDetails.expiryDate}
+            </div>
+            <div className="mb-4 flex flex-col">
+              <span className="font-bold">Price:</span>{" "}
+              {postDetails.free ? "Free" : postDetails.price}
             </div>
           </div>
+          <div className="mb-4 text-blue flex ">
+            <span className="text-blue font-bold block pr-4">Details:</span>{" "}
+            {postDetails.details}
+          </div>
+
+          <div className="mb-10 text-blue">
+            <span className="text-blue font-bold block">Additional Notes:</span>{" "}
+            {postDetails.additionalNotes}
+          </div>
+
           <div className="flex">
             <button
               className="bg-orange text-white font-semibold py-2 px-4 hover:bg-blue hover:text-white transition duration-300"
-              onClick={openModal}
+              onClick={openRequestForm}
             >
               Request Food
             </button>{" "}
           </div>
         </div>
       </div>
+      <RequestForm isOpen={isRequestFormOpen} onClose={closeRequestForm} />
     </div>
   );
 };

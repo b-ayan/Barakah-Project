@@ -7,21 +7,27 @@ import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import Donations from "./pages/Donations";
 import Details from "./pages/Details";
+import Filter from "./pages/Filter";
+import { AuthProvider } from "./hooks/Authcontext";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Navbar />
-      </div>
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/signup" element={<SignUp />}></Route>
-        <Route exact path="/signin" element={<SignIn />}></Route>
-        <Route exact path="/donations" element={<Donations />}></Route>
-        <Route exact path="/details" element={<Details />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+        </div>
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/signup" element={<SignUp />}></Route>
+          <Route exact path="/signin" element={<SignIn />}></Route>
+          <Route exact path="/donations" element={<Filter />}></Route>
+          <Route exact path="/details/:id" element={<Details />}></Route>
+          <Route exact path="/profile" element={<Profile />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

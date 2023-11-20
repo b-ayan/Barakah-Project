@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [formErrors, setFormErrors] = useState({});
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -17,51 +17,27 @@ const SignIn = () => {
     });
   };
 
-  const validateForm = () => {
-    const errors = {};
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      errors.email = "Invalid email address";
-    }
-
-    // Validate password
-    const passwordRegex =
-      /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/;
-    if (!passwordRegex.test(formData.password)) {
-      errors.password =
-        "Password must be at least 6 characters and include a capital letter, a number, and a symbol";
-    }
-
-    setFormErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Validate form before submission
-    if (validateForm()) {
-      // Prepare data for submission
-      const postData = {
-        email: formData.email,
-        password: formData.password,
-      };
+    // Prepare data for submission
+    const postData = {
+      email: formData.email,
+      password: formData.password,
+    };
 
-      try {
-        // Send data using Axios
-        const response = await axios.post(
-          " http://localhost:3000/users",
-          postData
-        );
+    try {
+      // Send data using Axios
+      const response = await axios.post(
+        "http://localhost:3000/users",
+        postData
+      );
 
-        // Handle success (you can customize this part based on your API response)
-        swal("Done!", "You've signed up successfully", "success");
-      } catch (error) {
-        // Handle error (you can customize this part based on your API error handling)
-        swal("Error!", error, "success");
-      }
+      // Handle success (you can customize this part based on your API response)
+      swal("Done!", "You've signed up successfully", "success");
+    } catch (error) {
+      // Handle error (you can customize this part based on your API error handling)
+      swal("Error!", error, "success");
     }
   };
 
@@ -89,15 +65,8 @@ const SignIn = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className={`block w-full p-2 mt-1 border h-10 ${
-                  formErrors.email ? "border-red-500" : ""
-                }`}
+                className="block w-full p-2 mt-1 border h-10"
               />
-              {formErrors.email && (
-                <div className="text-red-500 text-sm mt-1">
-                  {formErrors.email}
-                </div>
-              )}
             </div>
             <div className="mb-4">
               <label htmlFor="password" className="block text-sm font-bold">
@@ -109,15 +78,8 @@ const SignIn = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className={`block w-full p-2 mt-1 border h-10 ${
-                  formErrors.password ? "border-red-500" : ""
-                }`}
+                className="block w-full p-2 mt-1 border h-10"
               />
-              {formErrors.password && (
-                <div className="text-red-500 text-sm mt-1">
-                  {formErrors.password}
-                </div>
-              )}
             </div>
 
             <div className="text-center mt-8 ">
@@ -125,7 +87,7 @@ const SignIn = () => {
                 type="submit"
                 className="bg-orange  text-white py-2 px-20 shadow-md text-md font-semibold "
               >
-                Sign Up
+                Sign In
               </button>
 
               <div className="text-center mt-4">
@@ -137,7 +99,10 @@ const SignIn = () => {
 
               <div className="text-blue font-medium text-md mt-6">
                 Don't have an account?{" "}
-                <button className="font-bold">Sign Up</button>
+                <Link to="/signup">
+                  {" "}
+                  <button className="font-bold">Sign Up</button>
+                </Link>
               </div>
             </div>
           </form>
