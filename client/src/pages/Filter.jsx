@@ -88,6 +88,7 @@ function classNames(...classes) {
 export default function Filter() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [donations, setDonations] = useState([]);
+  const [displayed, setDisplayed] = useState([]);
   const [pageNumber, setPageNumber] = useState(0);
   const productsPerPage = 15; // Set the number of products per page
   //   const [isAuthenticated, setIsAuthenticated] = useState(true); // Set this based on your authentication state
@@ -129,20 +130,50 @@ export default function Filter() {
       .get("http://localhost:3000/posts")
       .then((response) => {
         setDonations(response.data);
+        setDisplayed(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
 
-  const pageCount = Math.ceil(donations.length / productsPerPage);
-  const displayedProducts = donations.slice(
+  const pageCount = Math.ceil(displayed.length / productsPerPage);
+  const displayedProducts = displayed.slice(
     pageNumber * productsPerPage,
     (pageNumber + 1) * productsPerPage
   );
 
   const handlePageClick = ({ selected }) => {
     setPageNumber(selected);
+  };
+
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+
+    // Filter the donations based on the search term
+    const searchResults = donations.filter((post) =>
+      post.foodType.toLowerCase().includes(searchTerm)
+    );
+
+    // Update the displayedProducts state with the search results
+    setDisplayed(searchResults);
+  };
+
+  const handleFilterChange = (sectionId, optionValue) => {
+    // Update the state based on the filter criteria
+    const updatedDonations = donations.map((donation) => {
+      const updatedOptions = donation[sectionId].map((option) => {
+        if (option.value === optionValue) {
+          return { ...option, checked: !option.checked };
+        }
+        return option;
+      });
+
+      return { ...donation, [sectionId]: updatedOptions };
+    });
+
+    // Update the displayedProducts state with the filtered results
+    setDonations(updatedDonations);
   };
 
   return (
@@ -272,6 +303,52 @@ export default function Filter() {
             <h1 className="text-4xl font-bold tracking-tight text-blue">
               Posts
             </h1>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <label
+                for="default-search"
+                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+              >
+                Search
+              </label>
+              <div class="relative">
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="search"
+                  id="default-search"
+                  class="block w-[500px] p-4 ps-10 text-sm text-gray-900 border border-blue rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search Oil, Rice..."
+                  onChange={handleSearch}
+                  //required
+                />
+                <button
+                  type="submit"
+                  class="text-white absolute end-2.5 bottom-2.5 bg-blue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">

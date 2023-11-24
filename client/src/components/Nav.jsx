@@ -29,7 +29,7 @@ const Navbar = () => {
             <a href="">About Us</a>
           </li>
           <li className="text-blue p-4 border-b-2 border-blue border-opacity-0 hover:border-opacity-100 hover:text-blue duration-200 cursor-pointer">
-            <a href="">Contact Us</a>
+            <Link to="/contactus">Contact Us</Link>
           </li>
           <li className="text-blue p-4 border-b-2 border-blue border-opacity-0 hover:border-opacity-100 hover:text-blue duration-200 cursor-pointer">
             <a href="">Donate</a>
@@ -43,7 +43,7 @@ const Navbar = () => {
           // Render profile icon and logout button when authenticated
           <>
             <Link to="/profile" title="Profile">
-              <div className=" border border-blue text-white p-2  cursor-pointer ">
+              <div className="  text-white p-2  cursor-pointer ">
                 {/* Add your profile icon (e.g., an avatar or user icon) here */}
                 <Link to="/profile">
                   <svg
@@ -65,7 +65,7 @@ const Navbar = () => {
             </Link>
             <button
               onClick={handleLogout}
-              className="ml-4 bg-trasparent text-blue border border-blue  py-2 px-4 shadow text-md font-semibold"
+              className="ml-4 bg-trasparent text-blue py-2 px-4  text-md font-semibold"
             >
               Logout
             </button>

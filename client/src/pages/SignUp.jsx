@@ -324,24 +324,23 @@ const SignUp = () => {
               >
                 Sign Up
               </button>
-
-              {userType === "charity" ? (
-                <div className="text-center mt-4">
-                  <div className="font-medium mb-4">or </div>
-                  <button className="bg-transparent border border-blue text-blue py-2 px-8  text-md font-semibold">
-                    Sign Up with Google
-                  </button>
-                </div>
-              ) : null}
-
-              <div className="text-blue font-medium text-md mt-12">
-                Already have an account?{" "}
-                <Link to="/signin">
-                  <button className="font-bold">Sign In</button>
-                </Link>
-              </div>
             </div>
           </form>
+          {userType === "charity" ? (
+            <div className="text-center mt-4">
+              <div className="font-medium mb-4">or </div>
+              <button className="bg-transparent border border-blue text-blue py-2 px-8  text-md font-semibold">
+                Sign Up with Google
+              </button>
+            </div>
+          ) : null}
+
+          <div className="text-blue font-medium text-md mt-12 text-center">
+            Already have an account?{" "}
+            <Link to="/signin">
+              <button className="font-bold">Sign In</button>
+            </Link>
+          </div>
         </div>{" "}
       </div>{" "}
     </div>

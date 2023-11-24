@@ -89,23 +89,22 @@ const SignIn = () => {
               >
                 Sign In
               </button>
-
-              <div className="text-center mt-4">
-                <div className="font-medium mb-4">or </div>
-                <button className="bg-transparent border border-blue text-blue py-2 px-8  text-md font-semibold">
-                  Sign Up with Google
-                </button>
-              </div>
-
-              <div className="text-blue font-medium text-md mt-6">
-                Don't have an account?{" "}
-                <Link to="/signup">
-                  {" "}
-                  <button className="font-bold">Sign Up</button>
-                </Link>
-              </div>
             </div>
           </form>
+          <div className="text-center mt-4">
+            <div className="font-medium mb-4">or </div>
+            <button className="bg-transparent border border-blue text-blue py-2 px-8  text-md font-semibold">
+              Sign Up with Google
+            </button>
+          </div>
+
+          <div className="text-blue font-medium text-md mt-6 text-center">
+            Don't have an account?{" "}
+            <Link to="/signup">
+              {" "}
+              <button className="font-bold">Sign Up</button>
+            </Link>
+          </div>
         </div>{" "}
       </div>{" "}
     </div>

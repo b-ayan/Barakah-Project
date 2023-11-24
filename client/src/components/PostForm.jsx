@@ -12,60 +12,75 @@ const PostForm = ({ showModal, onClose }) => {
   const [city, setCity] = useState("");
   const [expired, setExpired] = useState(false);
   const [expiryDate, setExpiryDate] = useState("");
-  const [free, setFree] = useState(true);
+  const [free, setFree] = useState(false);
   const [price, setPrice] = useState("");
   const [additionalNotes, setAdditionalNotes] = useState("");
+  const [Subscribed, setSubscribed] = useState("false");
 
   // ... (other form state variables)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Prepare the data object with all form details
-      const formData = {
-        foodType,
-        details,
-        quantity,
-        city,
-        expired,
-        expiryDate,
-        free,
-        price,
-        additionalNotes,
-        // Add other form fields as needed
-      };
+      // Assuming you have a way to determine the subscription status, replace this logic with your actual subscription check
 
-      // Make a POST request to your server endpoint with Axios
-      const response = await axios.post(
-        "http://localhost:3000/posts",
-        formData
-      );
+      // Check if the post is not free and the user is not subscribed
+      if (!free && !Subscribed) {
+        // Show a SweetAlert indicating that subscription is required
+        Swal.fire({
+          title: "Subscription Required",
+          text: "To post non-free products, please subscribe with us.",
+          icon: "info",
+          showCancelButton: true,
+          confirmButtonText: "Subscribe",
+          cancelButtonText: "Close",
+          confirmButtonColor: "#26577C", // Customize the confirm button color
+          cancelButtonColor: "gray", // Customize the cancel button color
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Handle subscription redirection or logic
+            // You can use history.push('/subscription') or any logic here
+          }
+        });
+      } else {
+        // Prepare the data object with all form details
+        const formData = {
+          foodType,
+          details,
+          quantity,
+          city,
+          expired,
+          expiryDate,
+          free,
+          price,
+          additionalNotes,
+          // Add other form fields as needed
+        };
 
-      // Handle the response as needed
-      console.log("Form submission successful:", response.data);
+        // Make a POST request to your server endpoint with Axios
+        const response = await axios.post(
+          "http://localhost:3000/posts",
+          formData
+        );
 
-      //   swal({
-      //     title: "Done!",
-      //     text: "Your post will be posted after being verified.",
-      //     icon: "success",
-      //     timer: 10000, // Set the duration in milliseconds
-      //     buttons: true, // Disable the close button
-      //   });
+        // Handle the response as needed
+        console.log("Form submission successful:", response.data);
 
-      // Show a sweet alert after successful submission
-      Swal.fire({
-        icon: "success",
-        title: "Success!",
-        text: "Your post will be posted after being verified.",
-      });
+        // Show a success SweetAlert after successful submission
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "Success!",
+        //   text: "Your post will be posted after being verified.",
+        // });
 
-      // Close the modal after successful submission
-      onClose();
+        // Close the modal after successful submission
+        onClose();
+      }
     } catch (error) {
       // Handle errors
       console.error("Form submission error:", error);
 
-      // Show an error sweet alert
+      // Show an error SweetAlert
       Swal.fire({
         icon: "error",
         title: "Error!",

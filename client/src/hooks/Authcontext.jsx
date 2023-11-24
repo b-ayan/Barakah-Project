@@ -17,8 +17,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isAuthenticated = () => {
-    return !!authToken;
-    // return true; // Double negation to convert to a boolean
+    // return !!authToken;
+    return true; // Double negation to convert to a boolean
   };
 
   return (
