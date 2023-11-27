@@ -7,7 +7,9 @@
       "password": "hashed_password",
       "phone": "0712345678",
       "city": "city1",
-      "role_id": 3
+      "role_id": 3,
+      "industry": "",
+      "img": "https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg"
     },
     {
       "id": 2,
@@ -16,16 +18,9 @@
       "password": "hashed_password",
       "phone": "0723456789",
       "city": "city2",
-      "role_id": 2
-    },
-    {
-      "id": 3,
-      "username": "charity_user",
-      "email": "charity@example.com",
-      "password": "hashed_password",
-      "phone": "0734567890",
-      "city": "city3",
-      "role_id": 4
+      "role_id": 2,
+      "industry": "",
+      "img": "https://montevista.greatheartsamerica.org/wp-content/uploads/sites/2/2016/11/default-placeholder.png"
     },
     {
       "username": "bbalkhader@gmail.com",
@@ -34,7 +29,53 @@
       "phone": "0798864897",
       "city": "city1",
       "role_id": 3,
-      "id": 4
+      "id": 4,
+      "industry": ""
+    },
+    {
+      "username": "bayan alkhader",
+      "email": "bayanbalkhader@gmail.com",
+      "password": "Bayan&2",
+      "phone": "0798864897",
+      "city": "city3",
+      "role_id": 2,
+      "industry": "animalFeed",
+      "id": 5
+    },
+    {
+      "username": "bayan alkhader",
+      "email": "bayan@gmail.com",
+      "password": "Bayan%2",
+      "phone": "0798864897",
+      "city": "city3",
+      "role_id": 2,
+      "industry": "agriculture",
+      "id": 6
+    },
+    {
+      "username": "bayan alkhader",
+      "email": "bayanbalkhader@gmail.com",
+      "password": "Bayan*2",
+      "phone": "0798864897",
+      "city": "city3",
+      "role_id": 3,
+      "industry": "",
+      "id": 7
+    },
+    {
+      "email": "bayan@gmail.com",
+      "password": "123456789",
+      "id": 8
+    },
+    {
+      "username": "bayan alkhader",
+      "email": "bayanbalkhader@gmail.com",
+      "password": "Bayan12&2",
+      "phone": "0798864897",
+      "city": "city3",
+      "role_id": 4,
+      "industry": "",
+      "id": 9
     }
   ],
   "cards": [
@@ -179,9 +220,368 @@
       "foodName": "Delicious Food 3",
       "image": "path/to/food3.png",
       "location": "City 3, Country",
-      "username": "User3",
+      "username": "bayan",
       "postedTime": "October 2, 2023"
     }
- 
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "foodType": "Vegetables",
+      "details": "Fresh vegetables from the garden",
+      "quantity": "5 kg",
+      "city": "Amman",
+      "expired": false,
+      "expiryDate": "2023-12-01",
+      "free": true,
+      "price": "",
+      "additionalNotes": "Organic produce",
+      "username": "Bayan",
+      "postedTime": "3-11-2023"
+    },
+    {
+      "id": 2,
+      "foodType": "Bread",
+      "details": "Freshly baked bread",
+      "quantity": "3 loaves",
+      "city": "Zarqa",
+      "expired": true,
+      "expiryDate": "2023-11-20",
+      "free": false,
+      "price": "5.99",
+      "additionalNotes": "Contains gluten",
+      "username": "Bayan",
+      "postedTime": "3-11-2023"
+    },
+    {
+      "foodType": "leftovers",
+      "details": "rice",
+      "quantity": "5kg",
+      "city": "amman",
+      "expired": false,
+      "expiryDate": "2023-11-20",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 3
+    },
+    {
+      "foodType": "ggggg",
+      "details": "ggggggg",
+      "quantity": "ggggggg",
+      "city": "amman",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 4
+    },
+    {
+      "foodType": "bbbbbbb",
+      "details": "bbbbbb",
+      "quantity": "2kg",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 5
+    },
+    {
+      "foodType": "hfhfhffhfhhf",
+      "details": "kdjjhhfkfl;",
+      "quantity": "4kg",
+      "city": "amman",
+      "expired": false,
+      "expiryDate": "2023-11-21",
+      "free": false,
+      "price": "5 jd",
+      "additionalNotes": "",
+      "id": 6
+    },
+    {
+      "foodType": "Fruits",
+      "details": "raw",
+      "quantity": "2 kg",
+      "city": "zarqa",
+      "expired": false,
+      "expiryDate": "2023-11-25",
+      "free": false,
+      "price": "2 jd",
+      "additionalNotes": "",
+      "id": 7
+    },
+    {
+      "foodType": "hekkk",
+      "details": "etccc",
+      "quantity": "unitss",
+      "city": "amman",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "additional notes",
+      "id": 8
+    },
+    {
+      "foodType": "sweets",
+      "details": "etcc",
+      "quantity": "servings",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": false,
+      "price": "20 jd",
+      "additionalNotes": "addddddd",
+      "id": 9
+    },
+    {
+      "foodType": "foood",
+      "details": "cccccc",
+      "quantity": "ccccc",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 10
+    },
+    {
+      "foodType": "tyoeee",
+      "details": "ingggg",
+      "quantity": "units",
+      "city": "amman",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "addd",
+      "id": 11
+    },
+    {
+      "foodType": "tryyyy",
+      "details": "try",
+      "quantity": "try",
+      "city": "zarqa",
+      "expired": false,
+      "expiryDate": "2023-11-30",
+      "free": false,
+      "price": "10 jd",
+      "additionalNotes": "ennn",
+      "id": 12
+    },
+    {
+      "foodType": "lasttt",
+      "details": "lasttt",
+      "quantity": "weights",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 13
+    },
+    {
+      "foodType": "okkk",
+      "details": "kkkkk",
+      "quantity": "kk",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 14
+    },
+    {
+      "foodType": "whattt",
+      "details": "ttt",
+      "quantity": "ttt",
+      "city": "amman",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "add",
+      "id": 15
+    },
+    {
+      "foodType": "akjdla",
+      "details": "kkk",
+      "quantity": "dd",
+      "city": "zarqa",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "add",
+      "id": 16
+    },
+    {
+      "foodType": "rice and salads ",
+      "details": "cooked meals",
+      "quantity": "20 servings",
+      "city": "amman",
+      "expired": true,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "there is no additional notes ",
+      "id": 17
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": false,
+      "price": "",
+      "additionalNotes": "",
+      "id": 18
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": true,
+      "price": "",
+      "additionalNotes": "",
+      "id": 19
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": false,
+      "price": "",
+      "additionalNotes": "",
+      "id": 20
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": false,
+      "price": "54",
+      "additionalNotes": "",
+      "id": 21
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": false,
+      "price": "",
+      "additionalNotes": "",
+      "id": 22
+    },
+    {
+      "foodType": "",
+      "details": "",
+      "quantity": "",
+      "city": "",
+      "expired": false,
+      "expiryDate": "",
+      "free": false,
+      "price": "",
+      "additionalNotes": "",
+      "id": 23
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "deliveryAddress": "zarqa",
+      "contactNumber": "0798864897",
+      "username": "bayan alkhader",
+      "industry": "charity",
+      "foodType": "Rice"
+    },
+    {
+      "deliveryAddress": "zarqa, 26 st",
+      "contactNumber": "0798864897",
+      "id": 2,
+      "username": "bayan alkhader",
+      "industry": "charity",
+      "foodType": "Rice"
+    },
+    {
+      "deliveryAddress": "Amman ,  shafa ",
+      "contactNumber": "091021704",
+      "id": 3,
+      "username": "bayan alkhader",
+      "industry": "charity",
+      "foodType": "Rice"
+    },
+    {
+      "deliveryAddress": "Amman ,  sweifieh",
+      "contactNumber": "0797311132",
+      "id": 4,
+      "username": "bayan alkhader",
+      "industry": "charity",
+      "foodType": "Rice"
+    },
+    {
+      "deliveryAddress": "zarqa, 26 st",
+      "contactNumber": "0798864897",
+      "username": "Ehab",
+      "industry": "Recycling",
+      "foodType": "Bread",
+      "id": 5
+    },
+    {
+      "deliveryAddress": "zarqa, 26 st",
+      "contactNumber": "0798864897",
+      "username": "sondos",
+      "industry": "Recycling",
+      "foodType": "oiiil and rice",
+      "id": 6
+    },
+    {
+      "deliveryAddress": "bsbsbsbb",
+      "contactNumber": "kjladhdhh",
+      "username": "sondos",
+      "industry": "Recycling",
+      "foodType": "oiiil and rice",
+      "donation_id": "1",
+      "id": 7
+    },
+    {
+      "collectionLocation": "ksjlsjl",
+      "collectionTime": "bbbbbbbb",
+      "contactNumber": "bbbbbb",
+      "id": 8
+    },
+    {
+      "collectionLocation": "znnnnnnnnn",
+      "collectionTime": "zzzzzzz",
+      "contactNumber": "zzzzzzzz",
+      "id": 9
+    },
+    {
+      "collectionLocation": "znnnnnnnnn",
+      "collectionTime": "zzzzzzz",
+      "contactNumber": "zzzzzzzz",
+      "orderId": "99",
+      "id": 10
+    }
   ]
 }

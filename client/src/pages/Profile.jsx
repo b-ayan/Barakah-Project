@@ -6,6 +6,7 @@ import History from "../components/History";
 import Generalinfo from "../components/Generalinfo";
 import ProfileAvatar from "../components/Avatar";
 import ChangePassword from "../components/ChangePassword";
+import Users from "../Admin/Users";
 
 const Profile = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("Requests");
@@ -36,6 +37,7 @@ const Profile = () => {
         {selectedMenuItem && (
           <div>
             {selectedMenuItem === "Requests" && <Requests />}
+            {/* {selectedMenuItem === "Requests" && <Users />} */}
             {selectedMenuItem === "History" && <History />}
             {selectedMenuItem === "Settings" && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
