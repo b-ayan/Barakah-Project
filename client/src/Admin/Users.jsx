@@ -59,7 +59,7 @@ const Users = () => {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   return (
-    <div>
+    <div className="bg-background">
       {/* Add the search input field */}
       <Input
         type="text"
@@ -200,7 +200,7 @@ const Users = () => {
             setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
           }
           disabled={currentPage === totalPages}
-          className="ml-4 bg-blue hover:bg-blue-600 text-white ml-4 cursor-pointer px-4 py-2 rounded focus:outline-none"
+          className=" bg-blue hover:bg-blue-600 text-white ml-4 cursor-pointer px-4 py-2 rounded focus:outline-none"
         >
           Next
         </button>

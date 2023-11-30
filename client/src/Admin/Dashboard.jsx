@@ -3,6 +3,7 @@ import Users from "./Users";
 import { useState } from "react";
 import Posts from "./Posts";
 import Side from "./Side";
+import Contact from "./Contact";
 
 const Dashboard = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("Users");
@@ -18,6 +19,7 @@ const Dashboard = () => {
           <div>
             {selectedMenuItem === "Users" && <Users />}
             {selectedMenuItem === "Posts" && <Posts />}
+            {selectedMenuItem === "Contact" && <Contact />}
 
             {/* Add more conditions for other menu items */}
           </div>

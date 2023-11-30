@@ -13,7 +13,13 @@ import {
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 // Define the table head for posts
-const POSTS_TABLE_HEAD = ["Food Type", "Username", "Created Time", "Action"];
+const POSTS_TABLE_HEAD = [
+  "Food Type",
+  "Username",
+  "Created Time",
+  "status",
+  "Action",
+];
 
 const Posts = () => {
   // State to store table rows for posts
@@ -45,7 +51,7 @@ const Posts = () => {
   }, []); // The empty dependency array ensures that this effect runs once after the initial render
 
   return (
-    <Card className="h-full w-full mt-8 ">
+    <Card className="h-full  mt-8 ml-[20%] w-[80%] ">
       <CardBody className="px-0">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
@@ -113,6 +119,16 @@ const Posts = () => {
                       </Typography>
                     </td>
                     <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {createdTime}
+                      </Typography>
+                    </td>
+
+                    <td className={classes}>
                       <Button
                         color="blue"
                         className="bg-blue"
@@ -132,7 +148,7 @@ const Posts = () => {
         <Details
           showModal={isModalOpen}
           onClose={closeModal}
-          postData={selectedPost}
+          id={selectedPost}
         />
       )}
     </Card>
